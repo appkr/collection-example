@@ -4,19 +4,20 @@ namespace App;
 
 use Illuminate\Support\Collection;
 
-class Project
+class Project extends Todo
 {
     const MAX_ELEMENTS = 3;
 
-    /** @var Collection|Task[] */
+    /** @var Collection|Todo[] */
     private $elements;
 
-    public function __construct(Collection $elements = null)
+    public function __construct(string $title, Collection $elements = null)
     {
         if ($elements != null && $elements->count() > self::MAX_ELEMENTS) {
             throw new \InvalidArgumentException("Capacity full");
         }
         $this->elements = $elements ?: new Collection();
+        parent::__construct($title);
     }
 
     public function getElements()
@@ -24,7 +25,7 @@ class Project
         return new Collection($this->elements->all());
     }
 
-    public function add(Task $element)
+    public function add(Todo $element)
     {
         if (! $this->canAddElement()) {
             throw new \InvalidArgumentException("Capacity full");
@@ -32,7 +33,7 @@ class Project
         $this->elements->add($element);
     }
 
-    public function remove(Task $element)
+    public function remove(Todo $element)
     {
         $index = $this->find($element);
         if ($index !== false) {
@@ -43,21 +44,35 @@ class Project
 
     public function markDone()
     {
-        $this->elements->each(function (Task $e) {
+        $this->elements->each(function (Todo $e) {
             $e->markDone();
         });
     }
 
     public function __toString()
     {
-        return $this->elements->reduce(function (string $carry, Task $e) {
+        return $this->elements->reduce(function (string $carry, Todo $e) {
             return $carry . (string) $e . PHP_EOL;
         }, "");
     }
 
-    private function find(Task $element) {
-        return $this->elements->search(function (Task $task) use ($element) {
-            return $task->hashCode() == $element->hashCode();
+    public function toHtml()
+    {
+        $html = "<li><a href='{$this->hashCode()}'>{$this->title}</a></li>";
+        if ($this->elements->isNotEmpty()) {
+            $html .= "<ul>";
+            $html .= $this->elements->reduce(function (string $carry, Todo $e) {
+                return $carry . (string) $e->toHtml();
+            }, "");
+            $html .="</ul>";
+        }
+
+        return $html;
+    }
+
+    private function find(Todo $element) {
+        return $this->elements->search(function (Todo $e) use ($element) {
+            return $e->hashCode() == $element->hashCode();
         });
     }
 

@@ -12,7 +12,7 @@ class ProjectTest extends TestCase
         $task1 = new Task("task 1");
         $task2 = new Task("task 2");
         $elements = new Collection([$task1, $task2]);
-        $sut = new Project($elements);
+        $sut = new Project("project1", $elements);
 
         echo $sut;
         self::assertNotEquals(spl_object_hash($elements), spl_object_hash($sut->getElements()));
@@ -28,7 +28,7 @@ class ProjectTest extends TestCase
         $task4 = new Task("task 4");
         $elements = new Collection([$task1, $task2, $task3, $task4]);
 
-        new Project($elements);
+        new Project("project1", $elements);
     }
 
     public function testShouldNotAcceptMoreElementsThanAllowedTo2()
@@ -40,7 +40,7 @@ class ProjectTest extends TestCase
         $task3 = new Task("task 3");
         $task4 = new Task("task 4");
         $elements = new Collection([$task1, $task2, $task3]);
-        $sut = new Project($elements);
+        $sut = new Project("project1", $elements);
 
         $sut->add($task4);
     }
@@ -50,7 +50,7 @@ class ProjectTest extends TestCase
         $task1 = new Task("task 1");
         $task2 = new Task("task 2");
         $elements = new Collection([$task1, $task2]);
-        $sut = new Project($elements);
+        $sut = new Project("project1", $elements);
 
         $sut->remove($task1);
 
@@ -63,7 +63,7 @@ class ProjectTest extends TestCase
         $task1 = new Task("task 1");
         $task2 = new Task("task 2");
         $elements = new Collection([$task1, $task2]);
-        $sut = new Project($elements);
+        $sut = new Project("project1", $elements);
 
         $sut->markDone();
 
