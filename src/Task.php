@@ -29,6 +29,11 @@ class Task
         return $this->isDone;
     }
 
+    public function hashCode()
+    {
+        return spl_object_hash($this);
+    }
+
     public function __toString()
     {
         $done = $this->isDone ? "true" : "false";
