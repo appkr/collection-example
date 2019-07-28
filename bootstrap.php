@@ -12,17 +12,17 @@
  * @see https://stackoverflow.com/a/19129147
  */
 
-require_once "vendor/autoload.php";
-
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
 
-$entityPath = [__DIR__ . "/./src/Doctrine"];
+require_once "vendor/autoload.php";
+
+$entityPath = [__DIR__ . "/src/Doctrine"];
 $devMode    = true;
+$doctrineConfig = Setup::createAnnotationMetadataConfiguration($entityPath, $devMode);
+
 $dbConfig   = [
     "driver" => "pdo_sqlite",
-    "database" => __DIR__ . "/./database.sqlite",
+    "database" => __DIR__ . "/database.sqlite",
 ];
-
-$doctrineConfig = Setup::createAnnotationMetadataConfiguration($entityPath, $devMode, null, null, false);
 $em = EntityManager::create($dbConfig, $doctrineConfig);
