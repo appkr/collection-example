@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "482beae4d1a356282a2bf3880f72792f",
+    "content-hash": "da9222a90ecec91f5609bf18813a2e29",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -282,6 +282,63 @@
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
             "time": "2019-07-05T17:41:14+00:00"
+        },
+        {
+            "name": "nanigans/single-table-inheritance",
+            "version": "0.8.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Nanigans/single-table-inheritance.git",
+                "reference": "65ecaf7b62af2a52ae382fb15eafdaafff744bdb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Nanigans/single-table-inheritance/zipball/65ecaf7b62af2a52ae382fb15eafdaafff744bdb",
+                "reference": "65ecaf7b62af2a52ae382fb15eafdaafff744bdb",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": ">= 5.2",
+                "illuminate/support": ">= 5.2",
+                "php": ">= 5.5.9"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*|~1.0",
+                "orchestra/database": "3.2.*|3.5.*|3.6.*",
+                "orchestra/testbench": "3.2.*|3.5.*|3.6.*",
+                "phpunit/phpunit": "~4.8|~5.2|~6.0|~7.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.9.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nanigans\\SingleTableInheritance\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jon Palmer",
+                    "email": "jpalmer@nanigans.com"
+                }
+            ],
+            "description": "Single Table Inheritance Trait",
+            "keywords": [
+                "eloquent",
+                "inheritance",
+                "laravel",
+                "model",
+                "single",
+                "table"
+            ],
+            "time": "2019-03-28T23:35:18+00:00"
         },
         {
             "name": "nesbot/carbon",
