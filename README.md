@@ -2,7 +2,10 @@
 
 - Illuminate Collection
 - First Class Collection
-- Composite Pattern
+- [Composite Pattern](https://docs.google.com/presentation/d/1Eha0ExQ-NmreewP7uZhXTIEJYu0HSdE2BGjsH_-MW4c/edit?usp=sharing)
+- Persist the composite
+    - Eloquent
+    - Doctrine
 
 ### 3 types of operations
 ```
