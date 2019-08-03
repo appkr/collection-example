@@ -11,6 +11,7 @@
     },
     "require": {
         "illuminate/support": "^5.8",
+        "doctrine/orm": "^2.6",
         "illuminate/database": "^5.8",
         "nanigans/single-table-inheritance": "^0.8.7"
     },
