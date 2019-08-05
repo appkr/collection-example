@@ -16,6 +16,18 @@ class ProjectTest extends TestCase
 
         echo $sut;
         self::assertNotEquals(spl_object_hash($elements), spl_object_hash($sut->getElements()));
+
+        echo "original collection: ", spl_object_hash($elements), PHP_EOL;
+        $elements->each(function (Todo $e) {
+            echo "{$e->getTitle()}: {$e->hashCode()}", PHP_EOL;
+        });
+
+        echo "---", PHP_EOL;
+
+        echo "cloned collection: ", spl_object_hash($sut->getElements()), PHP_EOL;
+        $sut->getElements()->each(function (Todo $e) {
+            echo "{$e->getTitle()}: {$e->hashCode()}", PHP_EOL;
+        });
     }
 
     public function testShouldNotAcceptMoreElementsThanAllowedTo()
